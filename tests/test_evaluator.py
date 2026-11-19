@@ -15,3 +15,9 @@ class EvaluatorTests(unittest.TestCase):
 
         self.assertIsNone(error)
         self.assertIs(result, True)
+
+    def test_rejects_non_boolean_operand(self):
+        error, result = evaluate(("AND", True, "FALSE"))
+
+        self.assertTrue(error)
+        self.assertIsNone(result)

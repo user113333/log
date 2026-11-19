@@ -1,14 +1,16 @@
-TOKENS = {
+KEYWORD_TOKENS = {
     "true": "TRUE",
     "false": "FALSE",
     "and": "AND",
-    "or": "OR"
+    "or": "OR",
 }
 
-def tokenize(s):
+
+def tokenize(source):
     tokens = []
-    for w in s.split():
-        if w not in TOKENS:
-            return f"({w} token does not exist", None
-        tokens.append(TOKENS[w])
+    for word in source.split():
+        token = KEYWORD_TOKENS.get(word)
+        if token is None:
+            return f"Unknown keyword {word!r}", None
+        tokens.append(token)
     return None, tokens
